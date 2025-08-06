@@ -2,12 +2,53 @@ import React from 'react';
 
 const ServiceDetailPage = ({params}) => {
     const id = params.id;
-    return (
-        <div>
-            <h1>Service Details</h1>
-            <p>ID: { id }</p>
-        </div>
-    );
+
+    const data = [
+    {
+        id: 1,
+        serviceName: "Laptop Repair",
+        imageUrl: "https://static.thenounproject.com/png/2896966-512.png",
+        description: "High quality laptop repair including screen replacements, hardware diagnostics, and system optimization."
+    },
+    {
+        id: 2,
+        serviceName: "Mobile Phone Repair",
+        imageUrl: "https://static.thenounproject.com/png/4036221-512.png",
+        description: "Fast and reliable mobile phone repair covering screen fix, battery replacement, and software troubleshooting."
+    },
+    {
+        id: 3,
+        serviceName: "Virus & Malware Removal",
+        imageUrl: "https://static.thenounproject.com/png/1897218-512.png",
+        description: "Complete virus and malware removal service to protect your device from threats and improve speed."
+    },
+    {
+        id: 4,
+        serviceName: "Wi‑Fi Setup & Troubleshooting",
+        imageUrl: "https://static.thenounproject.com/png/80756-512.png",
+        description: "Professional Wi‑Fi installation, configuration and troubleshooting for home or office networks."
+    }
+    ];
+    const singleData = data.find(d =>d.id == id);
+
+    if(singleData){
+        return (
+            <div>
+                <h1>Service Details</h1>
+                <p>ID: { id }</p>
+                <h2 className='font-bold text-xl'>{singleData.serviceName}</h2>
+                <p>{singleData.description}</p>
+                <img src={singleData.imageUrl} alt="" />
+            </div>
+        );
+    }
+    else{
+        return(
+            <>
+                <p>Not Found Service</p>
+            </>
+        )
+    }
 };
 
 export default ServiceDetailPage;
